@@ -6,6 +6,7 @@ import java.util.List;
 public record Solicitation(Long id,
                            String number,
                            String status,
+                           String situation,
                            List<Product> products,
                            DeliveryDocument deliveryDocument,
                            LocalDateTime createdAt){

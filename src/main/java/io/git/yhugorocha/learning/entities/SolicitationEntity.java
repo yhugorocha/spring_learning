@@ -1,5 +1,6 @@
 package io.git.yhugorocha.learning.entities;
 
+import io.git.yhugorocha.learning.entities.enums.SolicitationSituation;
 import io.git.yhugorocha.learning.entities.enums.SolicitationStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,9 @@ public class SolicitationEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 100)
     private SolicitationStatus status;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "situation", length = 100)
+    private SolicitationSituation situation;
     @OneToMany(mappedBy = "solicitation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductEntity> products;
     @OneToOne(cascade = CascadeType.ALL)
