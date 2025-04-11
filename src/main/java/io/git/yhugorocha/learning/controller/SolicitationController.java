@@ -2,6 +2,7 @@ package io.git.yhugorocha.learning.controller;
 
 import io.git.yhugorocha.learning.dto.Solicitation;
 import io.git.yhugorocha.learning.service.SolicitationService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class SolicitationController {
     private final SolicitationService solicitationService;
 
     @PostMapping
-    public ResponseEntity<Solicitation> createSolicitation(@RequestBody Solicitation solicitation){
+    public ResponseEntity<Solicitation> createSolicitation(@Valid @RequestBody Solicitation solicitation){
         return ResponseEntity.ok(solicitationService.create(solicitation));
     }
 

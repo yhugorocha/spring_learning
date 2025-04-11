@@ -31,11 +31,14 @@ public interface SolicitationMapper {
 
     @Named("stringToSituation")
     static SolicitationSituation stringToSituation(String situationStr) {
-        for (SolicitationSituation situation : SolicitationSituation.values()) {
-            if (situation.getSituation().equalsIgnoreCase(situationStr)) {
-                return situation;
+        if(situationStr != null){
+            for (SolicitationSituation situation : SolicitationSituation.values()) {
+                if (situation.getSituation().equalsIgnoreCase(situationStr)) {
+                    return situation;
+                }
             }
+            throw new IllegalArgumentException("Situação inválida: " + situationStr);
         }
-        throw new IllegalArgumentException("Situação inválida: " + situationStr);
+        return null;
     }
 }

@@ -36,6 +36,8 @@ public class SolicitationEntity {
     @JoinColumn(name = "delivery_document_id", referencedColumnName = "id")
     private DeliveryDocumentEntity deliveryDocument;
     @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime publicationDate;
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
 
     @PrePersist

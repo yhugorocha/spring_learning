@@ -1,6 +1,8 @@
 package io.git.yhugorocha.learning.service;
 
 import io.git.yhugorocha.learning.dto.Solicitation;
+import io.git.yhugorocha.learning.entities.enums.SolicitationSituation;
+import io.git.yhugorocha.learning.entities.enums.SolicitationStatus;
 import io.git.yhugorocha.learning.mapper.SolicitationMapper;
 import io.git.yhugorocha.learning.repository.SolicitationRepository;
 import jakarta.transaction.Transactional;
@@ -19,6 +21,8 @@ public class SolicitationService {
     @Transactional(rollbackOn = Exception.class)
     public Solicitation create(Solicitation solicitation){
         var entity = solicitationMapper.toSolicitationEntity(solicitation);
+        entity.setStatus(SolicitationStatus.OPEN);
+        entity.setSituation(SolicitationSituation.INITIATED);
         solicitationRepository.save(entity);
         return solicitationMapper.toSolicitation(entity);
     }
