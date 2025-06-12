@@ -33,7 +33,7 @@ class SolicitationServiceTest {
 
     @Test
     @DisplayName("Test create Solicitation")
-    void testCreate() {
+    void testCreate_when_Solicitation_shouldCreateSolicitationEntity() {
         Solicitation solicitation = mock(Solicitation.class);
         SolicitationEntity entity = mock(SolicitationEntity.class);
         Solicitation resultDto = mock(Solicitation.class);
