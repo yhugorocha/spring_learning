@@ -1,9 +1,12 @@
 package io.git.yhugorocha.learning.controller;
 
 import io.git.yhugorocha.learning.dto.Solicitation;
+import io.git.yhugorocha.learning.entities.SolicitationEntity;
 import io.git.yhugorocha.learning.service.SolicitationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +27,11 @@ public class SolicitationController {
     @GetMapping
     public ResponseEntity<List<Solicitation>> getSolicitations(){
         return ResponseEntity.ok(solicitationService.findAll());
+    }
+
+    @GetMapping("/paginado")
+    public ResponseEntity<Page<SolicitationEntity>> getSolicitations(Pageable pageable){
+        return ResponseEntity.ok(solicitationService.findAllPageable(pageable));
     }
 
     @PutMapping("/{id}")
